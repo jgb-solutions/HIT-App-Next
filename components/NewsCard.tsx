@@ -21,10 +21,9 @@ const useStyles = makeStyles({
 
 export default function NewsCard({ news }: { news: NewsInterface }) {
   const classes = useStyles()
-  const router = useRouter()
 
   return (
-    <Link href={`/n/${news.hash}`}>
+    <Link href={`/n/[hash]`} as={`/n/${news.hash}`}>
       <a>
         <Card>
           <CardActionArea>
