@@ -15,7 +15,7 @@ export default function Post({ news }) {
 export async function getStaticPaths() {
   const res = await fetch(API_URL)
   const posts = (await res.json()).data
-  const paths = posts.map((post) => `/n/${post.hash}`)
+  const paths = posts.map(post => ({ hash: `/n/${post.hash}` }))
 
   return { paths, fallback: true }
 }
