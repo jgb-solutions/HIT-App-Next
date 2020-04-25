@@ -7,6 +7,7 @@ import NewsInterface from '../interfaces/NewsInterface'
 import MainLayout from '../components/layouts/Main'
 import NewsCard from '../components/NewsCard'
 import useAllNews from '../hooks/useAllNews'
+import { API_URL } from '../utils/constants'
 
 // import NewsInterface from '../interfaces/NewsInterface'
 // import useAllNews from '../hooks/useAllNews'
@@ -37,7 +38,7 @@ export default function AllNews({ posts }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch("http://web.infotoutan.loc/api/news")
+  const res = await fetch(API_URL)
 
   const posts = (await res.json()).data
 
