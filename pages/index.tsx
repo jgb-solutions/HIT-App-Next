@@ -12,7 +12,7 @@ import { API_URL } from '../utils/constants'
 // import useAllNews from '../hooks/useAllNews'
 // import SEO from '../components/SEO'
 
-export default function AllNews({ posts }) {
+export default function AllNews({ posts }: { posts: NewsInterface[] }) {
   const { data: newsData, loading, error, hasMore, loadMore } = useAllNews(posts)
 
   return (
