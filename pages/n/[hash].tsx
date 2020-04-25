@@ -7,7 +7,8 @@ import NewsCard from "../../components/NewsCard"
 export default function Post({ news }) {
   return (
     <MainLayout>
-      <NewsCard news={news} />
+      //<NewsCard news={news} />
+       {JSON.stringify(news)} 
     </MainLayout>
   )
 }
