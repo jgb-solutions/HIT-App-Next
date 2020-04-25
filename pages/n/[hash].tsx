@@ -30,11 +30,16 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { hash } = params
 
-  const res = await fetch(`${API_URL}/${hash}`)
+  if (params) {
+    const { hash } = params
 
-  const news = await res.json()
+    const res = await fetch(`${API_URL}/${hash}`)
 
-  return { props: { news } }
+    const news = await res.json()
+
+    return { props: { news } }
+  }
+
+  return { props: {} }
 }
