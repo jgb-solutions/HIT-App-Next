@@ -1,11 +1,14 @@
 import fetch from "node-fetch"
 import { useRouter } from 'next/router'
+import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
+
 
 import { API_URL } from "../../utils/constants"
 import MainLayout from "../../components/layouts/Main"
 import NewsCard from "../../components/NewsCard"
+import NewsInterface from "../../interfaces/NewsInterface"
 
-export default function Post({ news }) {
+export default function Post({ news }: { news: NewsInterface }) {
   const router = useRouter()
 
   return (
@@ -19,14 +22,14 @@ export default function Post({ news }) {
 
 export async function getStaticPaths() {
   const res = await fetch(API_URL)
-  const posts = (await res.json()).data
+  const allNews = (await res.json()).data
 
-  const paths = posts.map(post => ({ params: { hash: post.hash } }))
+  const paths = allNews.map((news: NewsInterface) => ({ params: { hash: news.hash } }))
 
   return { paths, fallback: true }
 }
 
-export async function getStaticProps({ params }) {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { hash } = params
 
   const res = await fetch(`${API_URL}/${hash}`)
