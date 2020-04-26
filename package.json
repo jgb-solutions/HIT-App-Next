@@ -15,7 +15,8 @@
     "node-fetch": "^2.6.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-infinite-scroller": "^1.2.4"
+    "react-infinite-scroller": "^1.2.4",
+    "react-share": "^4.1.0"
   },
   "devDependencies": {
     "@types/node": "^13.13.2",

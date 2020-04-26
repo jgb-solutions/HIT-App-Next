@@ -1,15 +1,13 @@
+import Link from 'next/link'
 import fetch from 'node-fetch'
 import Grid from '@material-ui/core/Grid'
 import InfiniteScroll from 'react-infinite-scroller'
-import Link from 'next/link'
 
-import NewsInterface from '../interfaces/NewsInterface'
-import MainLayout from '../components/layouts/Main'
-import NewsCard from '../components/NewsCard'
 import useAllNews from '../hooks/useAllNews'
 import { API_URL } from '../utils/constants'
-
-// import useAllNews from '../hooks/useAllNews'
+import NewsCard from '../components/NewsCard'
+import MainLayout from '../components/layouts/Main'
+import NewsInterface from '../interfaces/NewsInterface'
 // import SEO from '../components/SEO'
 
 export default function AllNews({ posts }: { posts: NewsInterface[] }) {
@@ -23,12 +21,13 @@ export default function AllNews({ posts }: { posts: NewsInterface[] }) {
         hasMore={hasMore}
         // loader={<Spinner key={1} />}
         useWindow={false}
+      // initialLoad={false}
       >
         <Grid container spacing={2}>
           {newsData.map((news: NewsInterface) => (
             <Grid item md={3} sm={4} xs={12} key={news.hash}>
               <Link href={`/n/[hash]`} as={`/n/${news.hash}`}>
-                <a>
+                <a style={{ textDecoration: 'none' }}>
                   <NewsCard news={news} />
                 </a>
               </Link>

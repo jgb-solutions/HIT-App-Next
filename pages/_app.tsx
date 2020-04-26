@@ -1,10 +1,11 @@
-import React, { DOMElement } from 'react'
+import React from 'react'
 import { AppProps } from 'next/app'
 import PropTypes from 'prop-types'
 import Head from 'next/head'
 import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from '../src/theme'
+import { APP_NAME } from '../utils/constants'
 
 export default function MyApp(props: AppProps) {
   const { Component, pageProps } = props
@@ -12,15 +13,13 @@ export default function MyApp(props: AppProps) {
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles: any = document.querySelector('#jss-server-side')
-    if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles)
-    }
+    jssStyles.parentElement.removeChild(jssStyles)
   }, [])
 
   return (
     <React.Fragment>
       <Head>
-        <title>My page</title>
+        <title>{APP_NAME}</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
       <ThemeProvider theme={theme}>

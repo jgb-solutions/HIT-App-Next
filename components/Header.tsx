@@ -4,19 +4,12 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
-import AccountCircle from '@material-ui/icons/AccountCircle'
 import MenuIcon from '@material-ui/icons/Menu'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
-import Link from "next/link"
-import Avatar from '@material-ui/core/Avatar'
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 
 import Menu from './Menu'
 import colors from '../utils/colors'
-// import SearchInput from './SearchInput'
-import { SMALL_SCREEN_SIZE } from '../utils/constants'
-import Routes from '../routes'
-// import Right from './Right'
+import { SMALL_SCREEN_SIZE, APP_NAME } from '../utils/constants'
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -72,14 +65,13 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-type Props = {}
+type Props = {
+  title?: string
+}
 
 const Header = (props: Props) => {
   const styles = useStyles()
   const [drawerLeftOPen, setDrawerLeftOpen] = useState(false)
-  const [drawerRightOPen, setDrawerRightOpen] = useState(false)
-  // const currentUser = useSelector(({ currentUser }: AppStateInterface) => currentUser)
-  // const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
 
   return (
     <div className={styles.grow}>
@@ -94,7 +86,7 @@ const Header = (props: Props) => {
           </IconButton>
           {/* <SearchInput /> */}
           <Typography variant="h6" className={styles.title}>
-            Haïti Info Toutan (HIT)
+            {props.title || APP_NAME}
           </Typography>
         </Toolbar>
       </AppBar>
