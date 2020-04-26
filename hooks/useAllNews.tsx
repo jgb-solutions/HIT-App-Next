@@ -55,9 +55,9 @@ export default function useAllNews(list: NewsInterface[]): AllNews {
   const loadMore = () => {
     if (hasMore && currentPage === page) {
       setPage(page + 1)
-    } else {
-      setHasMore(false)
     }
+
+    return
   }
 
   return { data: newsList, loading, error, loadMore, hasMore }

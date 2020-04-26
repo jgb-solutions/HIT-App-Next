@@ -6,6 +6,7 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from '../src/theme'
 import { APP_NAME } from '../utils/constants'
+import { Router } from 'next/router'
 
 export default function MyApp(props: AppProps) {
   const { Component, pageProps } = props
@@ -13,7 +14,10 @@ export default function MyApp(props: AppProps) {
   React.useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles: any = document.querySelector('#jss-server-side')
-    jssStyles.parentElement.removeChild(jssStyles)
+
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles)
+    }
   }, [])
 
   return (
@@ -22,11 +26,11 @@ export default function MyApp(props: AppProps) {
         <title>{APP_NAME}</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      {/* <ThemeProvider> */}
+      {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+      <CssBaseline />
+      <Component {...pageProps} />
+      {/* </ThemeProvider> */}
     </React.Fragment>
   )
 }

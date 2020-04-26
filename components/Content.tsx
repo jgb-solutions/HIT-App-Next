@@ -1,21 +1,8 @@
-import React, { ReactNode, useEffect } from 'react'
-// import { useLocation } from 'gatsby'
-
+import React, { ReactNode } from 'react'
 
 const Content = (props: { style?: Object, children: ReactNode, className?: string }) => {
-  // const { pathname } = useLocation()
-  let mainRef: HTMLElement | null
-
-  // useEffect(() => {
-  //   if (mainRef) {
-  //     mainRef.scrollTo(0, 0)
-  //   }
-  //   // eslint-disable-next-line
-  // }, [pathname])
-
   return (
     <main
-      ref={ref => { mainRef = ref }}
       className={props.className}
       style={{
         paddingTop: 70,

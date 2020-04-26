@@ -30,6 +30,7 @@ import NewsCard from "../../components/NewsCard"
 import NewsInterface from "../../interfaces/NewsInterface"
 import colors from "../../utils/colors"
 import SEO from "../../components/SEO"
+import { useEffect } from "react"
 
 export default function Post({ news }: { news: NewsInterface & { randoms: NewsInterface[] } }) {
   const router = useRouter()
@@ -84,18 +85,39 @@ export default function Post({ news }: { news: NewsInterface & { randoms: NewsIn
           />
 
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} md={6}>
               <Card>
                 <CardActionArea>
-                  <img src={news.image_url || 'https://files.infotoutan.com/images/03kpJg2M2zsaY3GmdRUn50OKQfua2p84ETrg2L3V.jpeg'} alt={news.title} />
+                  {!news.video_id &&
+                    <img style={{ maxWidth: '100%' }} src={news.image_url || 'https://files.infotoutan.com/images/03kpJg2M2zsaY3GmdRUn50OKQfua2p84ETrg2L3V.jpeg'} alt={news.title} />
+                  }
 
                   <CardContent>
-                    <Typography variant="body2" color="textSecondary" component="p">
+                    <Typography variant="body2" color="textSecondary" component="div">
                       {news.public_date}
                     </Typography>
+                    <br />
+
                     {news.video_id && (
-                      <div className="video-container">
+                      <div style={{
+                        marginBottom: 15,
+                        marginLeft: -16,
+                        marginRight: -16,
+                        position: 'relative',
+                        paddingBottom: '56.25%',
+                        paddingTop: 30,
+                        height: 0,
+                        overflow: 'hidden',
+                      }
+                      }>
                         <iframe
+                          style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%'
+                          }}
                           width="853"
                           height="480"
                           src={`https://www.youtube.com/embed/${news.video_id}`}
@@ -103,7 +125,9 @@ export default function Post({ news }: { news: NewsInterface & { randoms: NewsIn
                           allowFullScreen title={news.title} />
                       </div>
                     )}
-                    <div dangerouslySetInnerHTML={{ __html: `${news.body}` }} />
+                    <Typography component="div">
+                      <div dangerouslySetInnerHTML={{ __html: `${news.body}` }} />
+                    </Typography>
                   </CardContent>
                 </CardActionArea>
                 {!!news.ads && (
@@ -125,7 +149,7 @@ export default function Post({ news }: { news: NewsInterface & { randoms: NewsIn
               <Grid container spacing={2}>
                 {news.randoms.map((news: NewsInterface) => (
                   <Grid item md={3} sm={4} xs={12} key={news.hash}>
-                    <Link href={`/n/[hash]`} as={`/n/${news.hash}`} scroll>
+                    <Link href={`/n/[hash]`} as={`/n/${news.hash}`}>
                       <a style={{ textDecoration: 'none' }}>
                         <NewsCard news={news} />
                       </a>
@@ -136,8 +160,9 @@ export default function Post({ news }: { news: NewsInterface & { randoms: NewsIn
             </>
           ) : null}
         </>
-      )}
-    </MainLayout>
+      )
+      }
+    </MainLayout >
   )
 }
 
