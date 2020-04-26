@@ -3,6 +3,7 @@ import Link from "next/link"
 import { makeStyles } from "@material-ui/styles"
 
 import Routes from "../routes"
+import { APP_NAME } from "../utils/constants"
 
 const useStyles = makeStyles({
   logo: {
@@ -35,8 +36,8 @@ export default function Logo({ style, size }: { style?: string, size?: number })
           <img
             style={sizes}
             className={`${styles.logo} ${style}`}
-            src="/assets/images/haiti-Info-Toutan-transparent.png"
-            alt="MP3 Pam logo"
+            src="https://files.infotoutan.com/images/haiti-Info-Toutan-transparent.png"
+            alt={APP_NAME}
           />
         </a>
       </Link>
