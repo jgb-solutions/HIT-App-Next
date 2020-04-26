@@ -125,7 +125,7 @@ export default function Post({ news }: { news: NewsInterface & { randoms: NewsIn
               <Grid container spacing={2}>
                 {news.randoms.map((news: NewsInterface) => (
                   <Grid item md={3} sm={4} xs={12} key={news.hash}>
-                    <Link href={`/n/[hash]`} as={`/n/${news.hash}`}>
+                    <Link href={`/n/[hash]`} as={`/n/${news.hash}`} scroll>
                       <a style={{ textDecoration: 'none' }}>
                         <NewsCard news={news} />
                       </a>
