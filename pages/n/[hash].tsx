@@ -37,7 +37,7 @@ export default function Post({ news }: { news: NewsInterface & { randoms: NewsIn
     const hashtags = `HIT HITNews news`
 
     return (
-      <Grid container spacing={2}>
+      <Grid container spacing={2} justify="space-around">
         <Grid item>
           <FacebookShareButton
             url={url}
