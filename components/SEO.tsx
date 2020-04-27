@@ -28,22 +28,22 @@ export default function SEO({ title, url, description, type, image, imageWidth, 
   return (
     <>
       <Head>
-        <meta property="og:title" content={titleContent} />
-        <meta property="og:site_name" content={APP_NAME} />
-        <meta property="og:url" content={url || DOMAIN} />
-        <meta property="og:description" content={descriptionContent} />
-        <meta property="og:type" content={type || "website"} />
-        <meta property="og:image" content={imageContent} />
-        {imageWidth && <meta property="og:image:width" content={`${imageWidth}`} />}
-        {imageHeight && <meta property="og:image:height" content={`${imageHeight}`} />}
+        <meta property="og:title" content={titleContent} key="title" />
+        <meta property="og:site_name" content={APP_NAME} key="site_name" />
+        <meta property="og:url" content={url || DOMAIN} key="url" />
+        <meta property="og:description" content={descriptionContent} key="description" />
+        <meta property="og:type" content={type || "website"} key="type" />
+        <meta property="og:image" content={imageContent} key="image" />
+        {imageWidth && <meta property="og:image:width" content={`${imageWidth}`} key="image_width" />}
+        {imageHeight && <meta property="og:image:height" content={`${imageHeight}`} key="image_height" />}
 
-        <meta property="fb:app_id" content={FB_APP_ID} />
+        <meta property="fb:app_id" content={FB_APP_ID} key="fb_app_id" />
 
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:site" content={`@${TWITTER_HANDLE}`} />
-        <meta name="twitter:title" content={titleContent} />
-        <meta name="twitter:description" content={descriptionContent} />
-        <meta name="twitter:image" content={imageContent} />
+        <meta name="twitter:card" content="summary" key="twitter_card" />
+        <meta name="twitter:site" content={`@${TWITTER_HANDLE}`} key="twitter_site" />
+        <meta name="twitter:title" content={titleContent} key="twitter_title " />
+        <meta name="twitter:description" content={descriptionContent} key="twitter_description" />
+        <meta name="twitter:image" content={imageContent} key="twitter_image" />
 
         <title>{titleContent}</title>
       </Head>
