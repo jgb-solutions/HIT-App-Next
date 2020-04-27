@@ -31,7 +31,7 @@ export default function SEO({ title, url, description, type, image, imageWidth, 
         <meta property="og:title" content={titleContent} key="title" />
         <meta property="og:site_name" content={APP_NAME} key="site_name" />
         <meta property="og:url" content={url || DOMAIN} key="url" />
-        <meta property="og:description" key="description" dangerouslySetInnerHTML={{ __html: descriptionContent }} />
+        <meta property="og:description" content={descriptionContent.replace(/(<([^>]+)>)/ig, "")} key="description" />
         <meta property="og:type" content={type || "website"} key="type" />
         <meta property="og:image" content={imageContent} key="image" />
         {imageWidth && <meta property="og:image:width" content={`${imageWidth}`} key="image_width" />}
@@ -42,7 +42,7 @@ export default function SEO({ title, url, description, type, image, imageWidth, 
         <meta name="twitter:card" content="summary" key="twitter_card" />
         <meta name="twitter:site" content={`@${TWITTER_HANDLE}`} key="twitter_site" />
         <meta name="twitter:title" content={titleContent} key="twitter_title " />
-        <meta name="twitter:description" dangerouslySetInnerHTML={{ __html: descriptionContent }} key="twitter_description" />
+        <meta name="twitter:description" content={descriptionContent.replace(/(<([^>]+)>)/ig, "")} key="twitter_description" />
         <meta name="twitter:image" content={imageContent} key="twitter_image" />
 
         <title>{titleContent}</title>
