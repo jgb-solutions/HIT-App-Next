@@ -14,12 +14,17 @@ export const useStyles = makeStyles({
       '-webkit-box-shadow': 'inset 0 0 6px rgba(0,0,0,0.00)'
     },
     '*::-webkit-scrollbar-thumb': {
-      backgroundColor: 'rgba(0,0,0,.4)',
+      // backgroundColor: 'rgba(0,0,0,.4)',
       outline: '1px solid slategrey'
+    },
+    body: {
+      // backgroundColor: '#e9ebee'
+      backgroundColor: colors.contentGrey
     }
   },
   container: {
-    backgroundColor: colors.black,
+    backgroundColor: colors.white,
+    color: '#1d2129',
     maxWidth: 1200,
     margin: '0 auto',
   },
@@ -37,12 +42,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="transition-container">
-      <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        <Grid container className={`${styles.container}`}>
-          {children}
-        </Grid>
-      </MuiThemeProvider>
+      {/* <MuiThemeProvider theme={theme}> */}
+      <CssBaseline />
+      <Grid container className={`${styles.container}`}>
+        {children}
+      </Grid>
+      {/* </MuiThemeProvider> */}
     </div>
   )
 }

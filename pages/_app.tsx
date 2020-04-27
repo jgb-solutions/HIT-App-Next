@@ -6,6 +6,7 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from '../src/theme'
 import { APP_NAME } from '../utils/constants'
+import '../public/assets/css/react-transitions.css'
 
 export default function MyApp(props: AppProps) {
   const { Component, pageProps } = props

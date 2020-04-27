@@ -22,7 +22,7 @@ export default function AllNews({ posts }: { posts: NewsInterface[] }) {
         useWindow={false}
       // initialLoad={false}
       >
-        <Grid container spacing={2}>
+        <Grid container spacing={2} className="react-transition scale-in">
           {newsData.map((news: NewsInterface) => (
             <Grid item md={3} sm={4} xs={12} key={news.hash}>
               <Link href={`/n/[hash]`} as={`/n/${news.hash}`}>

@@ -2,14 +2,14 @@ import React from "react"
 import HomeIcon from "@material-ui/icons/Home"
 import InfoIcon from '@material-ui/icons/Info'
 
-import Routes from "../routes"
 import Logo from "./Logo"
-import { menuStyles } from "../styles/menuStyles"
+import Routes from "../routes"
 import Link from "../src/Link"
+import { menuStyles } from "../styles/menuStyles"
 
 const mainMenu = [
-	{ name: "Home", to: Routes.pages.home, icon: <HomeIcon /> },
-	{ name: "About", to: Routes.pages.about, icon: <InfoIcon />, }
+	{ name: "HIT", to: Routes.pages.home, icon: <HomeIcon /> },
+	{ name: "À Propos", to: Routes.pages.about, icon: <InfoIcon />, }
 ]
 
 type Props = {

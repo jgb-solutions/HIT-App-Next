@@ -9,7 +9,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="fr">
         <Head>
-          {/* PWA primary color */}
           <meta name="theme-color" content={colors.twitter} />
           <link
             rel="stylesheet"

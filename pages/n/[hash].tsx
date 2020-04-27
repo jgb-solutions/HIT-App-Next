@@ -72,7 +72,7 @@ export default function Post({ news }: { news: NewsInterface & { randoms: NewsIn
   return (
     <MainLayout title={news?.title}>
       {router.isFallback ? <CircularProgress /> : (
-        <>
+        <div className="react-transition flip-in-x">
           <SEO
             title={`${news.title}`}
             url={`${APP_NAME}/n/${news.hash}`}
@@ -159,7 +159,7 @@ export default function Post({ news }: { news: NewsInterface & { randoms: NewsIn
               </Grid>
             </>
           ) : null}
-        </>
+        </div>
       )
       }
     </MainLayout >
