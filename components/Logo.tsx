@@ -2,6 +2,7 @@ import React from "react"
 import Link from "next/link"
 import { makeStyles } from "@material-ui/styles"
 
+import Image from "./Image"
 import Routes from "../routes"
 import { APP_NAME } from "../utils/constants"
 
@@ -15,7 +16,6 @@ const useStyles = makeStyles({
     display: 'inline-block',
   },
 })
-
 
 export default function Logo({ style, size }: { style?: string, size?: number }) {
   const styles = useStyles()
@@ -33,11 +33,12 @@ export default function Logo({ style, size }: { style?: string, size?: number })
     <>
       <Link href={Routes.pages.home}>
         <a className={styles.logoLink}>
-          <img
+          <Image
             style={sizes}
             className={`${styles.logo} ${style}`}
             src="https://files.infotoutan.com/images/haiti-Info-Toutan-transparent.png"
             alt={APP_NAME}
+            photon={{ width: 190 }}
           />
         </a>
       </Link>

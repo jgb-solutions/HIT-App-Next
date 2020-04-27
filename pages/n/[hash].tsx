@@ -2,13 +2,10 @@ import fetch from "node-fetch"
 import { useRouter } from 'next/router'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
-import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
-import CardMedia from '@material-ui/core/CardMedia'
-import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Grid from '@material-ui/core/Grid'
@@ -31,6 +28,7 @@ import NewsInterface from "../../interfaces/NewsInterface"
 import colors from "../../utils/colors"
 import SEO from "../../components/SEO"
 import { useEffect } from "react"
+import Image from "../../components/Image"
 
 export default function Post({ news }: { news: NewsInterface & { randoms: NewsInterface[] } }) {
   const router = useRouter()
@@ -89,7 +87,11 @@ export default function Post({ news }: { news: NewsInterface & { randoms: NewsIn
               <Card>
                 <CardActionArea>
                   {!news.video_id &&
-                    <img style={{ maxWidth: '100%' }} src={news.image_url || 'https://files.infotoutan.com/images/03kpJg2M2zsaY3GmdRUn50OKQfua2p84ETrg2L3V.jpeg'} alt={news.title} />
+                    <Image
+                      src={news.image_url || 'https://files.infotoutan.com/images/03kpJg2M2zsaY3GmdRUn50OKQfua2p84ETrg2L3V.jpeg'}
+                      alt={news.title}
+                      photon={{ width: 663 }}
+                    />
                   }
 
                   <CardContent>

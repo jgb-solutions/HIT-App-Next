@@ -8,7 +8,6 @@ import { API_URL } from '../utils/constants'
 import NewsCard from '../components/NewsCard'
 import MainLayout from '../components/layouts/Main'
 import NewsInterface from '../interfaces/NewsInterface'
-// import SEO from '../components/SEO'
 
 export default function AllNews({ posts }: { posts: NewsInterface[] }) {
   const { data: newsData, loading, error, hasMore, loadMore } = useAllNews(posts)

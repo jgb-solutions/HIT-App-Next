@@ -2,13 +2,13 @@ import React, { ReactNode } from 'react'
 import { Grid } from '@material-ui/core'
 import Hidden from '@material-ui/core/Hidden'
 
-import Menu from '../Menu'
-import Content from '../Content'
-import Header from '../Header'
-
-import { mainLayoutStyles } from '../../styles/mainLayoutStyles'
-import RootLayout from './Root'
 import SEO from '../SEO'
+import Menu from '../Menu'
+import Header from '../Header'
+import RootLayout from './Root'
+import Content from '../Content'
+import { mainLayoutStyles } from '../../styles/mainLayoutStyles'
+
 
 
 export default function MainLayout({ children, title }: { children: ReactNode, title?: string }) {
