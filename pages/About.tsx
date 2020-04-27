@@ -2,7 +2,7 @@ import { APP_NAME } from '../utils/constants'
 import MainLayout from '../components/layouts/Main'
 import SEO from '../components/SEO'
 
-const About: React.FC = () => {
+export default function About() {
   return (
     <MainLayout title="À Propos">
       <SEO title="À Propos" />
@@ -23,5 +23,3 @@ const About: React.FC = () => {
     </MainLayout>
   )
 }
-
-export default About
