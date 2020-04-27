@@ -1,34 +1,32 @@
-import fetch from "node-fetch"
-import { useRouter } from 'next/router'
-import { GetStaticProps } from 'next'
 import Link from 'next/link'
+import fetch from "node-fetch"
+import { GetStaticProps } from 'next'
+import { useRouter } from 'next/router'
 import Card from '@material-ui/core/Card'
-import CardActionArea from '@material-ui/core/CardActionArea'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
-import Typography from '@material-ui/core/Typography'
+import CardActionArea from '@material-ui/core/CardActionArea'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import Grid from '@material-ui/core/Grid'
-
 import {
+  TwitterIcon,
+  TelegramIcon,
+  WhatsappIcon,
+  FacebookIcon,
   FacebookShareButton,
   TwitterShareButton,
   TelegramShareButton,
   WhatsappShareButton,
-  TelegramIcon,
-  WhatsappIcon,
-  FacebookIcon,
-  TwitterIcon,
 } from 'react-share'
 
-import { API_URL, TWITTER_HANDLE, APP_NAME } from "../../utils/constants"
-import MainLayout from "../../components/layouts/Main"
-import NewsCard from "../../components/NewsCard"
-import NewsInterface from "../../interfaces/NewsInterface"
-import colors from "../../utils/colors"
 import SEO from "../../components/SEO"
-import { useEffect } from "react"
+import colors from "../../utils/colors"
 import Image from "../../components/Image"
+import NewsCard from "../../components/NewsCard"
+import MainLayout from "../../components/layouts/Main"
+import NewsInterface from "../../interfaces/NewsInterface"
+import { API_URL, TWITTER_HANDLE, APP_NAME } from "../../utils/constants"
 
 export default function Post({ news }: { news: NewsInterface & { randoms: NewsInterface[] } }) {
   const router = useRouter()
