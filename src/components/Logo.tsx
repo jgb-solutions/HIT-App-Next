@@ -3,7 +3,7 @@ import Link from "next/link"
 import { makeStyles } from "@material-ui/styles"
 
 import Image from "./Image"
-import Routes from "../routes"
+import Routes from "../../routes"
 import { APP_NAME } from "../utils/constants"
 
 const useStyles = makeStyles({

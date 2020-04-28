@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import colors from '../utils/colors'
 
-export default ({ href, children }: { href: string, children: any }) => {
+export default ({ href, as, children }: { href: string, as?: string, children: any }) => {
   const router = useRouter()
 
   let style = children.props.style || {}
@@ -12,5 +12,5 @@ export default ({ href, children }: { href: string, children: any }) => {
     style = { color: colors.twitter }
   }
 
-  return <Link href={href}>{React.cloneElement(children, { style })}</Link>
+  return <Link href={href} as={as}>{React.cloneElement(children, { style })}</Link>
 }
