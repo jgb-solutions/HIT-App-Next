@@ -22,7 +22,8 @@ export default function NewsCard({ news }: { news: NewsInterface }) {
             {news.public_date}
           </Typography>
           <Typography gutterBottom variant="h5" component="h2">
-            {news.title}
+            {news.title.substring(0, 75)}
+            {news.title.length > 75 && '...'}
           </Typography>
         </CardContent>
       </CardActionArea>
