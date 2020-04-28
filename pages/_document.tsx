@@ -10,6 +10,30 @@ export default class MyDocument extends Document {
       <Html lang="fr">
         <Head>
           <meta name="theme-color" content={colors.twitter} />
+          <meta name="format-detection" content="telephone=no" />
+          <meta name="msapplication-tap-highlight" content="no" />
+
+          <link rel="manifest" href="/manifest.json" />
+
+          <link
+            rel="shortcut icon"
+            type="image/png"
+            href="/assets/icon/favicon.png"
+          />
+
+          {/* add to homescreen for ios  */}
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-title" content="Haiti Info Toutan" />
+          <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+          <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"></script>
+          <script dangerouslySetInnerHTML={{
+            __html: `
+            var OneSignal = window.OneSignal || []
+			      OneSignal.push(function() {
+              OneSignal.init({ appId: "05936fea-4aec-417a-84d5-f5cb6a7b89a1" })
+            })
+            `}} />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
@@ -18,6 +42,31 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+
+          <script dangerouslySetInnerHTML={{
+            __html: `
+            if ("serviceWorker" in navigator) {
+              window.addEventListener("load", function () {
+                navigator.serviceWorker
+                  .register("/worker.js")
+                  .then(
+                    function (registration) {
+                      console.log(
+                        "Worker registration successful",
+                        registration.scope
+                      )
+                    },
+                    function (err) {
+                      console.log("Worker registration failed", err)
+                    }
+                  )
+                  .catch(function (err) {
+                    console.log(err)
+                  })
+              })
+            } else {
+              console.log("Service Worker is not supported by browser.")
+            }`}} />
         </body>
       </Html>
     )
