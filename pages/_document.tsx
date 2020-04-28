@@ -13,7 +13,9 @@ export default class MyDocument extends Document {
           <meta name="format-detection" content="telephone=no" />
           <meta name="msapplication-tap-highlight" content="no" />
 
-          <link rel="manifest" href="/app-manifest.json" />
+          {/* <link rel="manifest" href="/app-manifest.json" /> */}
+          <link rel="manifest" href="dunplab-manifest-2328.json" />
+
 
           <link
             rel="shortcut icon"
