@@ -29,15 +29,19 @@ export default class MyDocument extends Document {
           <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"></script>
           <script dangerouslySetInnerHTML={{
             __html: `
-            var OneSignal = window.OneSignal || []
-			      OneSignal.push(function() {
-              OneSignal.init({ appId: "05936fea-4aec-417a-84d5-f5cb6a7b89a1" })
-            })
-            `}} />
+              var OneSignal = window.OneSignal || []
+              OneSignal.push(function() {
+                OneSignal.init({ appId: "05936fea-4aec-417a-84d5-f5cb6a7b89a1" })
+              })
+            `
+          }} />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
+
+          {/* Adsense */}
+          <script data-ad-client="ca-pub-3793163111580068" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </Head>
         <body>
           <Main />
@@ -45,28 +49,42 @@ export default class MyDocument extends Document {
 
           <script dangerouslySetInnerHTML={{
             __html: `
-            if ("serviceWorker" in navigator) {
-              window.addEventListener("load", function () {
-                navigator.serviceWorker
-                  .register("/worker.js")
-                  .then(
-                    function (registration) {
-                      console.log(
-                        "Worker registration successful",
-                        registration.scope
-                      )
-                    },
-                    function (err) {
-                      console.log("Worker registration failed", err)
-                    }
-                  )
-                  .catch(function (err) {
-                    console.log(err)
-                  })
-              })
-            } else {
-              console.log("Service Worker is not supported by browser.")
-            }`}} />
+              if ("serviceWorker" in navigator) {
+                window.addEventListener("load", function () {
+                  navigator.serviceWorker
+                    .register("/worker.js")
+                    .then(
+                      function (registration) {
+                        console.log(
+                          "Worker registration successful",
+                          registration.scope
+                        )
+                      },
+                      function (err) {
+                        console.log("Worker registration failed", err)
+                      }
+                    )
+                    .catch(function (err) {
+                      console.log(err)
+                    })
+                })
+              } else {
+                console.log("Service Worker is not supported by browser.")
+              }
+            `
+          }} />
+
+          {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161910284-1"></script>
+          <script dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'UA-161910284-1');
+            `
+          }} />
         </body>
       </Html>
     )
