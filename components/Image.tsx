@@ -111,14 +111,15 @@ const makePhotonUrl = (photon: Photon, domainWithoutProtocol: string) => {
     photonQuery += `&fit=${width},${height}`
   }
 
+  if (photon.ulb) {
+    photonQuery += `&ulb=true`
+  }
+
   if (photon.lb) {
     const { width, height } = photon.lb
     photonQuery += `&lb=${width},${height}`
   }
 
-  if (photon.ulb) {
-    photonQuery += `&ulb=true`
-  }
 
   if (photon.filter) {
     photonQuery += `&filter=${photon.filter}`

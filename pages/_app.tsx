@@ -20,20 +20,6 @@ export default function MyApp(props: AppProps) {
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles)
     }
-
-    // Router.events.on('routeChangeComplete', () => {
-    //   setTimeout(() => {
-    //     window.scroll({
-    //       top: 0,
-    //       left: 0,
-    //       behavior: 'smooth'
-    //     })
-    //     console.log('scrolling')
-    //     document.body.focus()
-    //   }, 2000)
-    // })
-
-    // window.history.scrollRestoration = 'auto'
   }, [])
 
   return (
