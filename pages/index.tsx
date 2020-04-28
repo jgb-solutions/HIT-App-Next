@@ -2,6 +2,7 @@ import Link from 'next/link'
 import fetch from 'node-fetch'
 import Grid from '@material-ui/core/Grid'
 import InfiniteScroll from 'react-infinite-scroller'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 import useAllNews from '../hooks/useAllNews'
 import { API_URL } from '../utils/constants'
@@ -15,12 +16,12 @@ export default function AllNews({ posts }: { posts: NewsInterface[] }) {
   return (
     <MainLayout>
       <InfiniteScroll
-        pageStart={1}
+        pageStart={2}
         loadMore={loadMore}
         hasMore={hasMore}
-        // loader={<Spinner key={1} />}
+        loader={<CircularProgress key={1} />}
         useWindow={false}
-      // initialLoad={false}
+        initialLoad={false}
       >
         <Grid container spacing={2} className="react-transition scale-in">
           {newsData.map((news: NewsInterface) => (

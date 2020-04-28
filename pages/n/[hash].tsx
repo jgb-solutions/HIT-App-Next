@@ -7,8 +7,9 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
-import CardActionArea from '@material-ui/core/CardActionArea'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import Hidden from '@material-ui/core/Hidden'
+
 import {
   TwitterIcon,
   TelegramIcon,
@@ -83,65 +84,86 @@ export default function Post({ news }: { news: NewsInterface & { randoms: NewsIn
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
               <Card>
-                <CardActionArea>
-                  {!news.video_id &&
-                    <Image
-                      src={news.image_url || 'https://files.infotoutan.com/images/03kpJg2M2zsaY3GmdRUn50OKQfua2p84ETrg2L3V.jpeg'}
-                      alt={news.title}
-                      photon={{ width: 663 }}
-                    />
-                  }
+                {!news.video_id &&
+                  <Image
+                    src={news.image_url || 'https://files.infotoutan.com/images/03kpJg2M2zsaY3GmdRUn50OKQfua2p84ETrg2L3V.jpeg'}
+                    alt={news.title}
+                    photon={{ width: 663 }}
+                  />
+                }
 
+                {news.video_id && (
+                  <div style={{
+                    position: 'relative',
+                    paddingBottom: '56.25%',
+                    paddingTop: 30,
+                    height: 0,
+                    overflow: 'hidden',
+                  }
+                  }>
+                    <iframe
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%'
+                      }}
+                      width="853"
+                      height="480"
+                      src={`https://www.youtube.com/embed/${news.video_id}`}
+                      frameBorder="0"
+                      allowFullScreen title={news.title} />
+                  </div>
+                )}
+                <Hidden mdUp>
+                  <CardContent>
+                    <Typography variant="body2" color="textSecondary" component="div">
+                      {news.public_date}
+                    </Typography>
+
+                    <Typography component="div">
+                      <div dangerouslySetInnerHTML={{ __html: `${news.body}` }} />
+                    </Typography>
+                  </CardContent>
+                  {!!news.ads && (
+                    <CardActions>
+                      <div dangerouslySetInnerHTML={{ __html: `${news.ads}` }} />
+                    </CardActions>
+                  )}
+                  <CardActions>
+                    <ShareButtons />
+                  </CardActions>
+                </Hidden>
+              </Card>
+            </Grid>
+
+            <Hidden smDown>
+              <Grid item xs={12} md={6}>
+                <Card>
                   <CardContent>
                     <Typography variant="body2" color="textSecondary" component="div">
                       {news.public_date}
                     </Typography>
                     <br />
 
-                    {news.video_id && (
-                      <div style={{
-                        marginBottom: 15,
-                        marginLeft: -16,
-                        marginRight: -16,
-                        position: 'relative',
-                        paddingBottom: '56.25%',
-                        paddingTop: 30,
-                        height: 0,
-                        overflow: 'hidden',
-                      }
-                      }>
-                        <iframe
-                          style={{
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            width: '100%',
-                            height: '100%'
-                          }}
-                          width="853"
-                          height="480"
-                          src={`https://www.youtube.com/embed/${news.video_id}`}
-                          frameBorder="0"
-                          allowFullScreen title={news.title} />
-                      </div>
-                    )}
                     <Typography component="div">
                       <div dangerouslySetInnerHTML={{ __html: `${news.body}` }} />
                     </Typography>
                   </CardContent>
-                </CardActionArea>
-                {!!news.ads && (
-                  <CardActions>
-                    <div dangerouslySetInnerHTML={{ __html: `${news.ads}` }} />
-                  </CardActions>
-                )}
-                <CardActions>
-                  <ShareButtons />
-                </CardActions>
-              </Card>
-            </Grid>
-          </Grid>
 
+                  {!!news.ads && (
+                    <CardActions>
+                      <div dangerouslySetInnerHTML={{ __html: `${news.ads}` }} />
+                    </CardActions>
+                  )}
+                  <CardActions>
+                    <ShareButtons />
+                  </CardActions>
+                </Card>
+              </Grid>
+            </Hidden>
+          </Grid>
           {news.randoms ? (
             <>
               <br />
