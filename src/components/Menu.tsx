@@ -3,7 +3,7 @@ import HomeIcon from "@material-ui/icons/Home"
 import InfoIcon from '@material-ui/icons/Info'
 
 import Logo from "./Logo"
-import Routes from "../../routes"
+import Routes from "../routes"
 import Link from "./Link"
 import { menuStyles } from "../styles/menuStyles"
 
