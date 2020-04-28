@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import fetch from 'node-fetch'
+import { GetStaticProps } from 'next'
 import Grid from '@material-ui/core/Grid'
 import InfiniteScroll from 'react-infinite-scroller'
 import CircularProgress from '@material-ui/core/CircularProgress'
@@ -39,7 +40,7 @@ export default function AllNews({ posts }: { posts: NewsInterface[] }) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch(API_URL)
 
   const posts = (await res.json()).data
