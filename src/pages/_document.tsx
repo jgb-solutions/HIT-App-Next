@@ -35,20 +35,26 @@ export default class MyDocument extends Document {
               }
 
               function loadAdAndPushcripts() {
-                var adsense = document.createElement("script");
-                adsense.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-                adsense.setAttribute('data-ad-client', "ca-pub-3793163111580068")
-                document.body.appendChild(adsense);
+                if (!document.querySelectorAll('.adsense-script').length) {
+                  var adsense = document.createElement("script");
+                  adsense.className = "adsense-script";
+                  adsense.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+                  adsense.setAttribute('data-ad-client', "ca-pub-3793163111580068")
+                  document.body.appendChild(adsense);
+                }
 
-                var onesignal = document.createElement("script");
-                onesignal.src = "https://cdn.onesignal.com/sdks/OneSignalSDK.js";
-                document.body.appendChild(onesignal);
+                if (!document.querySelectorAll('.onesignal-script').length) {
+                  var onesignal = document.createElement("script");
+                  onesignal.className = "onesignal-script";
+                  onesignal.src = "https://cdn.onesignal.com/sdks/OneSignalSDK.js";
+                  document.body.appendChild(onesignal);
+
+                  var OneSignal = window.OneSignal || []
+                  OneSignal.push(function() {
+                    OneSignal.init({ appId: "05936fea-4aec-417a-84d5-f5cb6a7b89a1" })
+                  })
+                }
               }
-
-              var OneSignal = window.OneSignal || []
-              OneSignal.push(function() {
-                OneSignal.init({ appId: "05936fea-4aec-417a-84d5-f5cb6a7b89a1" })
-              })
             `
           }} />
         </Head>
