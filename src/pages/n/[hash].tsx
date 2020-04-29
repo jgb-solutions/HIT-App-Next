@@ -189,7 +189,7 @@ export default function Post({ news }: { news: NewsInterface & { randoms: NewsIn
 }
 
 export async function getStaticPaths() {
-  const res = await fetch(API_URL)
+  const res = await fetch(`${API_URL}?take=100`)
   const allNews = (await res.json()).data
 
   const paths = allNews.map((news: NewsInterface) => `/n/${news.hash}`)
@@ -198,7 +198,6 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-
   if (params) {
     const { hash } = params
 
