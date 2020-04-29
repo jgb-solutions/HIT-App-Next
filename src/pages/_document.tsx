@@ -15,35 +15,42 @@ export default class MyDocument extends Document {
 
           {/* <link rel="manifest" href="/app-manifest.json" /> */}
           <link rel="manifest" href="dunplab-manifest-2328.json" />
-
-
+          <link rel="shortcut icon" type="image/png" href="/assets/icon/favicon.png" />
           <link
-            rel="shortcut icon"
-            type="image/png"
-            href="/assets/icon/favicon.png"
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
-
           {/* add to homescreen for ios  */}
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-title" content="Haiti Info Toutan" />
           <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-          <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"></script>
+          {/* Adsense */}
+          {/* <script data-ad-client="ca-pub-3793163111580068" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> */}
+          {/* <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"></script> */}
           <script dangerouslySetInnerHTML={{
             __html: `
+              window.onload = function(e) {
+                loadAdAndPushcripts()
+              }
+
+              function loadAdAndPushcripts() {
+                var adsense = document.createElement("script");
+                adsense.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+                adsense.setAttribute('data-ad-client', "ca-pub-3793163111580068")
+                document.body.appendChild(adsense);
+
+                var onesignal = document.createElement("script");
+                onesignal.src = "https://cdn.onesignal.com/sdks/OneSignalSDK.js";
+                document.body.appendChild(onesignal);
+              }
+
               var OneSignal = window.OneSignal || []
               OneSignal.push(function() {
                 OneSignal.init({ appId: "05936fea-4aec-417a-84d5-f5cb6a7b89a1" })
               })
             `
           }} />
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
-
-          {/* Adsense */}
-          <script data-ad-client="ca-pub-3793163111580068" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </Head>
         <body>
           <Main />
@@ -76,17 +83,21 @@ export default class MyDocument extends Document {
             `
           }} />
 
-          {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
-          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161910284-1"></script>
-          <script dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
+          {process.env.NODE_ENV === 'production' && (
+            <>
+              {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
+              <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161910284-1"></script>
+              <script dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
 
-              gtag('config', 'UA-161910284-1');
-            `
-          }} />
+                  gtag('config', 'UA-161910284-1');
+                `
+              }} />
+            </>
+          )}
         </body>
       </Html>
     )

@@ -3,7 +3,7 @@
 	"name": "Haïti Info Toutan",
 	"lang": "fr",
 	"description": "Haïti Info Toutan est une plateforme Fondée par de jeunes Haïtiens en 2016,       dont l'objectif est d'informer ses abonnés en tout le temps.",
-	"start_url": "https://infotoutan.com",
+	"start_url": "/",
 	"background_color": "#ffffff",
 	"theme_color": "#ffffff",
 	"dir": "ltr",
