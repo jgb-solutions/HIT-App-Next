@@ -205,7 +205,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
     const news = await res.json()
 
-    return { props: { news } }
+    return { props: { news }, unstable_revalidate: 30 }
   }
 
   return { props: {} }
